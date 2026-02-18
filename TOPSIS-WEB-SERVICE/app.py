@@ -45,8 +45,8 @@ def index():
     return render_template("index.html")
 
 def send_email(receiver, attachment):
-    sender = "pmahajan60_be24@thapar.edu"
-    password = "gxqrvpdrncbehawo"
+    sender = "your_real_mail.com"
+    password = "16digitcode"
 
     msg = EmailMessage()
     msg["Subject"] = "TOPSIS Result"
@@ -64,3 +64,4 @@ def send_email(receiver, attachment):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
