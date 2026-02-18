@@ -1,4 +1,4 @@
-# TOPSIS Web Application – Assignment 3
+# TOPSIS Web Application 
 
 This assignment implements a Flask-based web application for the **TOPSIS** (Technique for Order of Preference by Similarity to Ideal Solution) method. The application allows users to upload a decision matrix, input criteria weights and impacts, calculate TOPSIS scores, generate a results file, and receive the results via email.
 
