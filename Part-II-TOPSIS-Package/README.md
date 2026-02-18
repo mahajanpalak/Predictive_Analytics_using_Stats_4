@@ -1,156 +1,135 @@
-# 📦 Topsis-Palak-102497010  
-*A Python Package for Multi-Criteria Decision Making using TOPSIS*
+# TOPSIS Python Package  
+## Topsis-Palak-102497010
 
 ---
 
-## 📖 Overview
+## 📌 Overview
 
-This project is developed as part of an academic assignment to **create, package, and publish a Python library on PyPI** implementing the **TOPSIS (Technique for Order Preference by Similarity to Ideal Solution)** method.
+This project is a Python implementation of the **TOPSIS (Technique for Order Preference by Similarity to Ideal Solution)** method.  
+The project has been developed as a **Python package**, uploaded to **PyPI**, and can be executed directly using the **command line interface**.
 
-The package allows users to rank alternatives based on multiple criteria using a **command-line interface**, following proper software packaging standards.
+TOPSIS is a widely used **Multi-Criteria Decision Making (MCDM)** technique that ranks alternatives based on their closeness to an ideal best solution and distance from an ideal worst solution.
+
+---
+
+## 📦 Package Information
+
+- **Package Name:** topsis-palak-102497010  
+- **Author:** Palak  
+- **Roll Number:** 102497010  
+- **Version:** 1.0.1  
+
+🔗 **PyPI Package Link:**  
+https://pypi.org/project/topsis-palak-102497010/
 
 ---
 
 ## 🎯 Assignment Objectives
 
-This project fulfills the following requirements:
+This assignment required:
 
-- Develop a Python package implementing TOPSIS
-- Follow the naming convention: `Topsis-FirstName-RollNumber`
-- Upload the package to **pypi.org**
-- Provide a **User Manual**
-- Test installation and execution via command line
-- Document methodology, usage, and results clearly
+- Implementation of TOPSIS algorithm in Python  
+- Development of a command-line program  
+- Creation of a Python package  
+- Uploading the package to PyPI  
+- Providing a user manual (README)  
+- Testing installation and execution via command line  
 
----
-
-## 📌 Package Information
-
-- **Package Name:** Topsis-Palak-102497010  
-- **Version:** 1.0.1  
-- **Platform:** PyPI  
-- **Execution Mode:** Command Line  
+All objectives have been successfully completed.
 
 ---
 
-## 🧠 About TOPSIS Methodology
+## 🧠 Methodology – TOPSIS Algorithm
 
-TOPSIS is a **Multi-Criteria Decision Making (MCDM)** technique used to rank alternatives by comparing their distances from:
-
-- **Ideal Best Solution**
-- **Ideal Worst Solution**
-
-### Core Idea:
-The best alternative should:
-- Have the **minimum distance from the ideal best**
-- Have the **maximum distance from the ideal worst**
+The TOPSIS method follows the steps below:
 
 ---
 
-## 🧮 Methodology Implemented
+### Step 1: Decision Matrix Construction
 
-The package follows the standard TOPSIS methodology:
+The input file (CSV or Excel) must contain:
+- First column → Alternatives
+- Remaining columns → Criteria values
 
-### Step 1: Input Decision Matrix
-- Rows represent alternatives
-- Columns represent criteria
+Example:
+
+| Alternative | C1 | C2 | C3 |
+|------------|----|----|----|
+| A1 | 250 | 16 | 12 |
+| A2 | 200 | 20 | 8  |
 
 ---
 
-### Step 2: Normalize the Decision Matrix
+### Step 2: Normalization of Decision Matrix
+
 Each value is normalized using vector normalization:
 
-```
-rij = xij / √(Σ xij²)
-```
+rᵢⱼ = xᵢⱼ / √(Σ xᵢⱼ²)
 
-This removes scale differences among criteria.
+This ensures all criteria become dimensionless and comparable.
 
 ---
 
-### Step 3: Apply Weights
-Each normalized value is multiplied by its corresponding weight:
+### Step 3: Weighted Normalized Matrix
 
-```
-vij = rij × wj
-```
+Each normalized value is multiplied by its respective weight:
 
-This reflects the importance of each criterion.
+vᵢⱼ = rᵢⱼ × wⱼ
 
 ---
 
 ### Step 4: Determine Ideal Best and Ideal Worst
-- For **positive (+)** impact → higher value is better
-- For **negative (-)** impact → lower value is better
+
+For each criterion:
+
+If impact is **"+"** (benefit):
+- Ideal Best (V⁺) = maximum value
+- Ideal Worst (V⁻) = minimum value
+
+If impact is **"-"** (cost):
+- Ideal Best (V⁺) = minimum value
+- Ideal Worst (V⁻) = maximum value
 
 ---
 
-### Step 5: Calculate Separation Measures
+### Step 5: Separation Measures
 
 Distance from Ideal Best:
-```
-Si+ = √ Σ (vij − vj+)²
-```
+
+Sᵢ⁺ = √(Σ (vᵢⱼ − Vⱼ⁺)²)
 
 Distance from Ideal Worst:
-```
-Si− = √ Σ (vij − vj−)²
-```
+
+Sᵢ⁻ = √(Σ (vᵢⱼ − Vⱼ⁻)²)
 
 ---
 
-### Step 6: Calculate TOPSIS Score
+### Step 6: TOPSIS Score Calculation
 
-```
-Ci = Si− / (Si+ + Si−)
-```
+Cᵢ = Sᵢ⁻ / (Sᵢ⁺ + Sᵢ⁻)
 
-- Higher `Ci` → Better alternative
+Higher value of Cᵢ indicates a better alternative.
 
 ---
 
-### Step 7: Ranking
-Alternatives are ranked in descending order of TOPSIS score.
-
----
-
-## 📦 Package Structure
-
-```
-Topsis-Palak-102497010/
-│
-├── setup.py
-├── README.md
-├── __init__.py
-├── topsis.py
-└── screenshots/
-    ├── pypi_page.png
-    ├── pip_install.png
-    └── package_execution.png
-```
-
----
-
-## 🛠 Installation Guide (User Manual)
+## 💻 Installation
 
 Install the package directly from PyPI:
 
 ```bash
-pip install topsis_palak_102497010
-```
+pip install topsis-palak-102497010
 
 ---
 
-## 🖥️ Command Line Usage
+## ▶️ Command Line Usage
 
-### Syntax
 ```bash
-python -m topsis <InputFile> <Weights> <Impacts> <OutputFile>
+topsis <InputDataFile> <Weights> <Impacts> <OutputFileName>
 ```
 
 ### Example
 ```bash
-python -m topsis data.xlsx "1,1,1,2,2" "+,+,-,+,-" result.xlsx
+topsis data.xlsx "1,1,1,2,2" "+,+,-,+,-" result.xlsx
 ```
 
 ---
@@ -193,16 +172,12 @@ Clear error messages are shown for invalid inputs.
 
 ---
 
-## 📸 Screenshots (Proof of Execution)
 
 ### PyPI Package Page
 ![PyPI Page](screenshots/pypi_page.png)
 
-### Package Installation
-![Pip Install](screenshots/pip_install.png)
-
-### Command Line Execution
-![Execution](screenshots/package_execution.png)
+### Package Installation and Execution
+![Pip Install](screenshots/pip_install_and_execution.png)
 
 ---
 
@@ -243,5 +218,6 @@ All assignment requirements have been fulfilled.
 ## 👩‍🎓 Author
 
 **Palak**  
+
 
 
